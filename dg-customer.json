@@ -1,0 +1,37 @@
+{
+    "applicationName": "microservices",
+    "deploymentGroupName": "microservices-customer",
+    "deploymentConfigName": "CodeDeployDefault.ECSAllAtOnce",
+    "serviceRoleArn": "arn:aws:iam::767397795531:role/DeployRole",
+    "deploymentStyle": {
+        "deploymentType": "BLUE_GREEN",
+        "deploymentOption": "WITH_TRAFFIC_CONTROL"
+    },
+    "blueGreenDeploymentConfiguration": {
+        "terminateBlueInstancesOnDeploymentSuccess": {
+            "action": "TERMINATE",
+            "terminationWaitTimeInMinutes": 5
+        },
+        "deploymentReadyOption": {
+            "actionOnTimeout": "CONTINUE_DEPLOYMENT"
+        }
+    },
+    "ecsServices": [
+        {
+            "serviceName": "customer-microservice",
+            "clusterName": "microservices-serverlesscluster"
+        }
+    ],
+    "loadBalancerInfo": {
+        "targetGroupPairInfoList": [
+            {
+                "targetGroups": [
+                    { "name": "customer-tg-two" },
+                    { "name": "customer-tg-one" }
+                ],
+                "prodTrafficRoute": { "listenerArns": ["arn:aws:elasticloadbalancing:us-east-1:767397795531:listener/app/microservicesLB/ab7c7d3ddbf700c3/4366ad0b09d565c6"] },
+                "testTrafficRoute": { "listenerArns": ["arn:aws:elasticloadbalancing:us-east-1:767397795531:listener/app/microservicesLB/ab7c7d3ddbf700c3/abeca9b8ca6ad1c6"] }
+            }
+        ]
+    }
+}
