@@ -1,6 +1,8 @@
 # Building Microservices and a CI/CD Pipeline with AWS
 
-Arya Raditya Ardana · NIU 24/536660/TK/59543 · Cloud Computing Final Project
+Arya Raditya Ardana
+24/536660/TK/59543
+Cloud Computing Final Project
 
 A monolithic Node.js supplier directory (use case: Lab Equipment Supplier Directory) split into two Docker microservices and deployed on Amazon ECS Fargate behind an Application Load Balancer, with blue/green CI/CD through CodePipeline and CodeDeploy. Track B – Containers.
 
