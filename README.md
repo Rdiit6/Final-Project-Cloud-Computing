@@ -1,8 +1,9 @@
 # Building Microservices and a CI/CD Pipeline with AWS
 
-Arya Raditya Ardana
-24/536660/TK/59543
+Arya Raditya Ardana\
+24/536660/TK/59543\
 Cloud Computing Final Project
+
 
 A monolithic Node.js supplier directory (use case: Lab Equipment Supplier Directory) split into two Docker microservices and deployed on Amazon ECS Fargate behind an Application Load Balancer, with blue/green CI/CD through CodePipeline and CodeDeploy. Track B – Containers.
 
@@ -10,8 +11,8 @@ A monolithic Node.js supplier directory (use case: Lab Equipment Supplier Direct
 
 ![Architecture](docs/architecture.png)
 
-- **customer** – read-only supplier list (`/`, `/suppliers`), port 8080
-- **employee** – full CRUD under `/admin/*`, port 8080, restricted to the admin IP at the ALB
+- **customer** : read-only supplier list (`/`, `/suppliers`), port 8080
+- **employee** : full CRUD under `/admin/*`, port 8080, restricted to the admin IP at the ALB
 - Both services share Amazon RDS MySQL `supplierdb` (database `COFFEE`, table `suppliers`)
 - ALB `microservicesLB`: HTTP:80 production, HTTP:8080 test; `/admin/*` routes to employee
 - CI/CD: CodeCommit + ECR → CodePipeline → CodeDeploy (blue/green, ECSAllAtOnce)
